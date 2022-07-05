@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bienvenido a la lista de equipos de Qatar2022:</h1>
+    <div class="row">
+        @foreach (Equipo eq in ViewBag.ListaEquipos)
+        {
+            <div class="col-3">
+                <div class="card w-100 h-auto">
+                    <img class="card-img-top" src="@eq.Escudo" alt="Escudo">
+                    <div class="card-body">
+                        <h5 class="card-title">@eq.Nombre</h5>
+                    	<a class="btn btn-primary" href='@Url.Action("VerDetalleEquipo", "Home", new{IdEquipo = eq.IdEquipo})'>Info</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
