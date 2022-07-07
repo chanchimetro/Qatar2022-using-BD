@@ -4,8 +4,8 @@
 
 
 <div class="row">
-    <div class="col-md-auto">
-			<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="col-3">
+			<div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
 				<div class="carousel-inner">
 					<div class="carousel-item active">
 						<img src="@ViewBag.Equipo.Escudo" class="d-block w-100" alt="Escudo">
@@ -25,6 +25,80 @@
 			</div>
     </div>
     <div class="col">
-        <p>CopasGanadas: @ViewBag.Equipo.CopasGanadas</p>
+        <p class="h1 mb-0">@ViewBag.Equipo.Nombre</p>
+		<p class="h3 text-muted mt-0 mb-5">@ViewBag.Equipo.Continente</p>
+		<p class="h5">Copas Ganadas: @ViewBag.Equipo.CopasGanadas</p>
     </div>
 </div>
+<div class="row mt-3 justify-content-center">
+	<div class="col-6">
+		<table class="table table-hover table-striped text-center shadow">
+			<thead>
+				<tr>
+					<th scope="col">Jugadores:</th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (Jugador j in ViewBag.ListaJugadores)
+				{
+					<tr class="align-middle">
+						<td class="col-2"><img src="@j.Foto" class="img-fluid"></td>
+						<td class="col-3">@j.Nombre</td>
+						<td>
+							<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalJugador" onclick="MostrarJugador(@j.IdJugador)">
+								Ver info
+							</button>
+						</td>
+					</tr>
+				}
+				<div class="modal fade" id="modalJugador" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="NombreJugador">NombreJugador</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-4">
+										<img id="FotoJugador" src="src" class="img-fluid">
+									</div>
+									<div class="col">
+										<p id="EquipoJugador">EquipoJugador</p>
+										<p id="FechaJugador">FechaJugador</p>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<script>
+	function MostrarJugador(IdJ){
+		$.ajax(
+			{
+				type: 'POST',
+				datatype: 'JSON',
+				url: '/Home/VerDetalleJugadorAjax',
+				data: { IdJugador: IdJ },
+				success:
+					function (response)
+					{
+						$("#NombreJugador").html(response.nombre);
+						$("#FotoJugador").attr("src", response.foto);
+						$("#EquipoJugador").html("Equipo actual: "+response.equipoActual);
+						$("#FechaJugador").html("Fecha de nacimiento: "+response.fechaNacimiento.substr(0, 10));
+					}
+			}
+		)
+	}
+</script>

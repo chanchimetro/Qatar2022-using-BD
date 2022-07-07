@@ -487,11 +487,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\46872351\\Desktop\\TP6_Ayala_LopezAbraham\\TP6_Ayala_LopezAbraham.csproj",
+      "projectUniqueName": "C:\\Users\\46872351\\Desktop\\TP6_Ayala_LopezAbraham V2\\TP6_Ayala_LopezAbraham.csproj",
       "projectName": "TP6_Ayala_LopezAbraham",
-      "projectPath": "C:\\Users\\46872351\\Desktop\\TP6_Ayala_LopezAbraham\\TP6_Ayala_LopezAbraham.csproj",
+      "projectPath": "C:\\Users\\46872351\\Desktop\\TP6_Ayala_LopezAbraham V2\\TP6_Ayala_LopezAbraham.csproj",
       "packagesPath": "C:\\Users\\46872351\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\46872351\\Desktop\\TP6_Ayala_LopezAbraham\\obj\\",
+      "outputPath": "C:\\Users\\46872351\\Desktop\\TP6_Ayala_LopezAbraham V2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\46872351\\AppData\\Roaming\\NuGet\\NuGet.Config",

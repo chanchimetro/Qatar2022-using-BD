@@ -29,6 +29,10 @@ public class HomeController : Controller
         @ViewBag.DetalleJugador=BD.VerInfoJugador(IdJugador);
         return View();
     }
+    public Jugador VerDetalleJugadorAjax(int IdJugador){
+        ViewBag.Jugador = BD.VerInfoJugador(IdJugador);
+        return ViewBag.Jugador;
+    }
     public IActionResult AgregarJugador(int IdEquipo)
     {
         @ViewBag.IdEquipo=IdEquipo;
